@@ -2,7 +2,7 @@
 
 Adds a preview button to the entry editor screen to allow previewing of draft/revision entries
 
-![Screenshot](resources/img/plugin-logo.png)
+![Screenshot](src/img/logo.png)
 
 ## Requirements
 
