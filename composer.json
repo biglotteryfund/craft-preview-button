@@ -1,0 +1,41 @@
+{
+    "name": "biglotteryfund/preview-button",
+    "description": "Adds a preview button to the entry editor screen to allow previewing of draft/revision entries",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "preview button"
+    ],
+    "support": {
+        "docs": "https://github.com/biglotteryfund/craft-preview-button/blob/master/README.md",
+        "issues": "https://github.com/biglotteryfund/craft-preview-button/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Big Lottery Fund",
+            "homepage": "https://www.github.com/biglotteryfund"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0-RC1"
+    },
+    "autoload": {
+        "psr-4": {
+          "biglotteryfund\\previewbutton\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Preview Button",
+        "handle": "preview-button",
+        "schemaVersion": "1.0.0",
+        "hasCpSettings": true,
+        "hasCpSection": false,
+        "changelogUrl": "https://raw.githubusercontent.com/biglotteryfund/craft-preview-button/master/CHANGELOG.md",
+        "class": "biglotteryfund\\previewbutton\\PreviewButton"
+    }
+}
