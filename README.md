@@ -2,7 +2,7 @@
 
 Adds a preview button to the entry editor screen to allow previewing of draft/revision entries
 
-![Screenshot](resources/img/logo.png)
+![Logo](resources/img/logo.png)
 
 ## Requirements
 
@@ -24,20 +24,35 @@ To install the plugin, follow these instructions.
 
 ## Preview Button Overview
 
--Insert text here-
+Sites that make use of the [Element API](https://github.com/craftcms/element-api) may not benefit from Craft's preview features if they're not making use of templating. This plugin adds a button to the Entry editing screen which links to a preview URL with `?draft=$id` or `?version=$id` parameters so your backend can look up content from the correct place.
+
+It's your responsibility to write the backend code to fetch these revisions/drafts, but this plugin should allow you to give users a way to preview content directly from the editing screen.
 
 ## Configuring Preview Button
 
--Insert text here-
+There are three settings:
+
+![Logo](resources/img/settings.png)
+
+### 1. URL base
+This will replace your `siteUrl` for the entry's URI (eg. you may wish to serve preview content on a subdomain or subfolder of your main site).
+
+### 2. Version URL parameter (optional)
+This will be appended to the preview URI along with the ID of the version, eg. `?version=$id`.
+
+### 3. Draft URL parameter (optional)
+This will be appended to the preview URI along with the ID of the draft, eg. `?draft=$id`.
 
 ## Using Preview Button
 
--Insert text here-
+Install the plugin, configure a URL base as a minimum, and edit an entry in draft/revision mode. You should see a button below the entry fields:
+
+![Logo](resources/img/preview.png)
 
 ## Preview Button Roadmap
 
-Some things to do, and ideas for potential features:
+Possibly supporting more advanced URL construction and configuring which entry types or user roles can see the preview button.
 
-* Release it
+--
 
 Brought to you by [Big Lottery Fund](https://www.github.com/biglotteryfund)
