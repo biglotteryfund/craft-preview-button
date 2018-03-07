@@ -2,7 +2,6 @@
     "name": "biglotteryfund/preview-button",
     "description": "Adds a preview button to the entry editor screen to allow previewing of draft/revision entries",
     "type": "craft-plugin",
-    "version": "1.0.0",
     "keywords": [
         "craft",
         "cms",
