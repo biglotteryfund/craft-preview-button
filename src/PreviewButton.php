@@ -10,12 +10,9 @@
 
 namespace biglotteryfund\previewbutton;
 
-
 use Craft;
 use craft\base\Plugin;
 use craft\services\Plugins;
-use craft\events\PluginEvent;
-
 use yii\base\Event;
 
 /**
@@ -56,10 +53,9 @@ class PreviewButton extends Plugin
     protected function settingsHtml()
     {
         return \Craft::$app->getView()->renderTemplate('preview-button/settings', [
-            'settings' => $this->getSettings()
+            'settings' => $this->getSettings(),
         ]);
     }
-
 
     // Public Methods
     // =========================================================================
@@ -81,46 +77,45 @@ class PreviewButton extends Plugin
 
         self::$plugin = $this;
 
-        Craft::$app->getView()->hook('cp.entries.edit.details', function(array &$context) {
+        Craft::$app->getView()->hook('cp.entries.edit.details', function (array &$context) {
             $entry = $context['entry'];
-            
+
             $versionId = isset($entry->versionId) ? $entry->versionId : false;
             $draftId = isset($entry->draftId) ? $entry->draftId : false;
-        
-            $html = '';
-            
-            if ($versionId || $draftId) {
 
+            if ($versionId || $draftId) {
                 // this will be prefixed with the siteUrl
                 // (if we look for the entry path, it's empty for non-live content)
                 $siteUrl = \craft\helpers\UrlHelper::siteUrl();
                 $previewUrl = $this->getSettings()->urlBase . '/';
                 $previewLink = str_replace($siteUrl, $previewUrl, $entry->url);
+                $previewLabel = 'Preview';
 
                 if ($versionId) {
                     $previewLink .= '?' . $this->getSettings()->versionParameter . '=' . $versionId;
-                    $text = 'Preview this version';
+                    $previewText = 'Preview this version';
                 } else {
                     $previewLink .= '?' . $this->getSettings()->draftParameter . '=' . $draftId;
-                    $text = 'Preview this draft';
+                    $previewText = 'Preview this draft';
                 }
-
-                $html = '
-                <div class="meta">
-                    <div class="field">
-                        <div class="heading">
-                            <label>Preview</label>
-                        </div>
-                        <div class="input ltr">
-                            <a href="' . $previewLink . '" class="btn">' . $text . '</a>
-                        </div>
-                    </div>
-                </div>';
+            } else {
+                $previewLink = $entry->url;
+                $previewText = 'Visit current page';
+                $previewLabel = 'Live version';
             }
 
-            return $html;
+            return "
+            <div class='meta'>
+                <div class='field'>
+                    <div class='heading'>
+                        <label>${previewLabel}</label>
+                    </div>
+                    <div class='input ltr'>
+                        <a href='${previewLink}' class='btn'>${previewText}</a>
+                    </div>
+                </div>
+            </div>";
         });
-
 
 /**
  * Logging in Craft involves using one of the following methods:
