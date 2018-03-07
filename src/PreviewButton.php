@@ -89,6 +89,7 @@ class PreviewButton extends Plugin
                 $siteUrl = \craft\helpers\UrlHelper::siteUrl();
                 $previewUrl = $this->getSettings()->urlBase . '/';
                 $previewLink = str_replace($siteUrl, $previewUrl, $entry->url);
+                $previewLabel = 'Preview';
 
                 if ($versionId) {
                     $previewLink .= '?' . $this->getSettings()->versionParameter . '=' . $versionId;
@@ -99,14 +100,15 @@ class PreviewButton extends Plugin
                 }
             } else {
                 $previewLink = $entry->url;
-                $previewText = 'View live page';
+                $previewText = 'Visit current page';
+                $previewLabel = 'Live version';
             }
 
             return "
             <div class='meta'>
                 <div class='field'>
                     <div class='heading'>
-                        <label>Preview</label>
+                        <label>${previewLabel}</label>
                     </div>
                     <div class='input ltr'>
                         <a href='${previewLink}' class='btn'>${previewText}</a>
