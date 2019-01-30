@@ -100,8 +100,8 @@ class PreviewButton extends Plugin
                 }
             } else {
                 $previewLink = $entry->url;
-                $previewText = 'Visit current page';
-                $previewLabel = 'Live version';
+                $previewText = 'Live Preview';
+                $previewLabel = 'Preview';
             }
 
             return "
