@@ -87,8 +87,7 @@ class PreviewButton extends Plugin
                 // this will be prefixed with the siteUrl
                 // (if we look for the entry path, it's empty for non-live content)
                 $siteUrl = \craft\helpers\UrlHelper::siteUrl();
-                $previewUrl = $this->getSettings()->urlBase . '/';
-                $previewLink = str_replace($siteUrl, $previewUrl, $entry->url);
+                $previewLink = $this->getSettings()->urlBase . '/' . substr(parse_url($entryUrl)['path']);
                 $previewLabel = 'Preview';
 
                 if ($versionId) {
@@ -100,7 +99,7 @@ class PreviewButton extends Plugin
                 }
             } else {
                 $entryUrl = $entry->url;
-                $previewLink = $this->getSettings()->urlBase . '/' . substr(parse_url($entryUrl)['path'],1,-1); // use only the path of the url
+                $previewLink = $this->getSettings()->urlBase . '/' . substr(parse_url($entryUrl)['path']); // use only the path of the url
                 $previewText = 'Live Preview';
                 $previewLabel = 'Preview';
             }
