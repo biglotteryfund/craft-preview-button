@@ -85,7 +85,7 @@ class PreviewButton extends Plugin
 
             if ($versionId || $draftId) {
                 $entryUrl = $entry->url;
-                $previewLink = $this->getSettings()->urlBase . parse_url($entryUrl)['path'];
+                $previewLink = rtrim($this->getSettings()->urlBase, '/') . parse_url($entryUrl)['path']; // remove trailing slash from urlBase
                 $previewLabel = 'Preview';
 
                 if ($versionId) {
@@ -97,7 +97,7 @@ class PreviewButton extends Plugin
                 }
             } else {
                 $entryUrl = $entry->url;
-                $previewLink = $this->getSettings()->urlBase . parse_url($entryUrl)['path'];
+                $previewLink = rtrim($this->getSettings()->urlBase, '/') . parse_url($entryUrl)['path']; // remove trailing slash from urlBase
                 $previewText = 'Live Preview';
                 $previewLabel = 'Preview';
             }
