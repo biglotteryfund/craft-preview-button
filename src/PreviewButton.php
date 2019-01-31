@@ -84,11 +84,8 @@ class PreviewButton extends Plugin
             $draftId = isset($entry->draftId) ? $entry->draftId : false;
 
             if ($versionId || $draftId) {
-                // this will be prefixed with the siteUrl
-                // (if we look for the entry path, it's empty for non-live content)
-                $siteUrl = \craft\helpers\UrlHelper::siteUrl();
-                $previewUrl = $this->getSettings()->urlBase . '/';
-                $previewLink = str_replace($siteUrl, $previewUrl, $entry->url);
+                $entryUrl = $entry->url;
+                $previewLink = rtrim($this->getSettings()->urlBase, '/') . parse_url($entryUrl)['path']; // remove trailing slash from urlBase
                 $previewLabel = 'Preview';
 
                 if ($versionId) {
@@ -99,9 +96,10 @@ class PreviewButton extends Plugin
                     $previewText = 'Preview this draft';
                 }
             } else {
-                $previewLink = $entry->url;
-                $previewText = 'Visit current page';
-                $previewLabel = 'Live version';
+                $entryUrl = $entry->url;
+                $previewLink = rtrim($this->getSettings()->urlBase, '/') . parse_url($entryUrl)['path']; // remove trailing slash from urlBase
+                $previewText = 'Live Preview';
+                $previewLabel = 'Preview';
             }
 
             return "

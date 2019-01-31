@@ -1,21 +1,27 @@
 {% import "_includes/forms" as forms %}
 
-
-{{ forms.textField({
+{{
+  forms.textField({
     first: true,
-    label: "URL base",
+    label: 'URL base',
     name: 'urlBase',
+    placeholder: 'https://your-preview-url.com/',
     value: settings.urlBase
-}) }}
+  })
+}}
 
-{{ forms.textField({
-    label: "Version URL parameter",
+{{
+  forms.textField({
+    label: 'Version URL parameter',
     name: 'versionParameter',
     value: settings.versionParameter
-}) }}
+  })
+}}
 
-{{ forms.textField({
-    label: "Draft URL parameter",
+{{
+  forms.textField({
+    label: 'Draft URL parameter',
     name: 'draftParameter',
     value: settings.draftParameter
-}) }}
+  })
+}}
