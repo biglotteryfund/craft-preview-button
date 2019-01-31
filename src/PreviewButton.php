@@ -99,7 +99,8 @@ class PreviewButton extends Plugin
                     $previewText = 'Preview this draft';
                 }
             } else {
-                $previewLink = $entry->url;
+                $entryUrl = $entry->url;
+                $previewLink = $this->getSettings()->urlBase . '/' . substr(parse_url($entryUrl)['path'],1,-1); // use only the path of the url
                 $previewText = 'Live Preview';
                 $previewLabel = 'Preview';
             }
