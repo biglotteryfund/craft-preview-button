@@ -1,21 +1,26 @@
 {% import "_includes/forms" as forms %}
 
-
-{{ forms.textField({
+{{ forms.autosuggestField({
     first: true,
     label: "URL base",
+    id: 'url-base',
     name: 'urlBase',
-    value: settings.urlBase
+    value: settings.urlBase,
+    suggestEnvVars: true
 }) }}
 
-{{ forms.textField({
+{{ forms.autosuggestField({
     label: "Version URL parameter",
+    id: 'version-parameter',
     name: 'versionParameter',
-    value: settings.versionParameter
+    value: settings.versionParameter,
+    suggestEnvVars: true
 }) }}
 
-{{ forms.textField({
+{{ forms.autosuggestField({
     label: "Draft URL parameter",
+    id: 'draft-parameter',
     name: 'draftParameter',
-    value: settings.draftParameter
+    value: settings.draftParameter,
+    suggestEnvVars: true
 }) }}
