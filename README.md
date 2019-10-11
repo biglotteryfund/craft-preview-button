@@ -1,3 +1,7 @@
+## Note: this project is no longer maintained / usable beyond Craft CMS 3.2
+Craft 3.2 saw the release of "[headless preview](https://craftcms.com/blog/craft-32)" which effectively supersedes this plugin. Headless Preview is much more powerful than this plugin, and also makes it no longer work as draft entries are now dynamic (eg. use JavaScript to update the UI), which means our plain-ol' server-rendered button will no longer link to the right place. Our suggestion is to disable this plugin and modify your API calls to pass through the Craft preview tokens (which Just Work™) to your API – there's a good guide here: https://nystudio107.com/blog/headless-preview-in-craft-cms
+
+
 # Preview Button plugin for Craft CMS 3.x
 
 Adds a preview button to the entry editor screen to allow previewing of draft/revision entries
